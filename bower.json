@@ -6,10 +6,21 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.5.0",
-    "angular-route": "~1.5.0",
-    "angular-loader": "~1.5.0",
-    "angular-mocks": "~1.5.0",
-    "html5-boilerplate": "^5.3.0"
-  }
+    "angular-animate": "^1.6.3",
+    "bootstrap": "^3.3.7",
+    "angular-bootstrap": "^2.5.0",
+    "angular-ui-grid": "^4.0.2"
+  },
+  "authors": [
+    "yanivnoema <yaniv19200@hotmail.co.il>"
+  ],
+  "main": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
 }
