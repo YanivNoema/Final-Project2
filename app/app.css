@@ -23,3 +23,42 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+#map {
+  height: 500px;
+  width: 90%;
+  text-align: center;
+  margin: 20px;
+}
+
+
+.right_map{
+  background: #efefef;
+  width: 55%;
+  float: right;
+}
+
+.left_filter{
+  width: 35%;
+  float: left;
+}
+.center{
+  width: 100%;
+}
+
+.filter_title {
+  margin: 20px;
+}
+
+.map_title{
+  margin: 20px;
+}
+
+.nav_bar{
+  height: 50px;
+  background: #2b669a;
+}
+
+nav_title{
+  color:#FFFFFF;
+}

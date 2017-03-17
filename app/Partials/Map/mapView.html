@@ -1,0 +1,22 @@
+<div ng-controller="mapViewCtlr as vm">
+    <h3 class="map_title">Google Maps</h3>
+    <div id="map"></div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASbL2faj0qw94phPV9kScQC5VknElFNcE&callback=initMap">
+    </script>
+</div>
+
+<script>
+    function initMap() {
+        var uluru = {lat: 31.57, lng: 34.851612};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: uluru,
+            streetViewControl: false
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
