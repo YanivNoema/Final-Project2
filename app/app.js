@@ -1,11 +1,11 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('Tel-Hai Maps', [
+angular.module('Tel-Hai-Maps', [
   'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
+  'Tel-Hai-Maps.view1',
+  'Tel-Hai-Maps.view2',
+  'Tel-Hai-Maps.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="Tel-Hai Maps" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="Tel-Hai Maps" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="Tel-Hai Maps" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="Tel-Hai Maps" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="Tel-Hai-Maps" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="Tel-Hai-Maps" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="Tel-Hai-Maps" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="Tel-Hai-Maps" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,27 +19,60 @@
 </head>
 <body>
 
+<!-- In production use:
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+
+<!--<script src="bower_components/angular/angular.js"></script>-->
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="app.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
+  {{5+5}}
+  <div class="nav_bar row">
 
-  <div>Angular seed app: v<span app-version></span></div>
+  </div>
 
-  <!-- In production use:
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-  -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
-  <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
-  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-  <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+
+  <div class="middle row">
+    <div class="right_map">
+      <h3 class="map_title">Google Maps</h3>
+      <div id="map"></div>
+      <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASbL2faj0qw94phPV9kScQC5VknElFNcE&callback=initMap">
+      </script>
+    </div>
+    <div class="left_filter">
+      <h3 class="filter_title">Filters</h3>
+    </div>
+
+
+
+
+  <script>
+      function initMap() {
+          var uluru = {lat: 31.57, lng: 34.851612};
+          var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 8,
+              center: uluru
+          });
+          var marker = new google.maps.Marker({
+              position: uluru,
+              map: map
+          });
+      }
+  </script>
+  </div>
 </body>
 </html>
