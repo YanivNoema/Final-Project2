@@ -1,64 +1,61 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+h1{
+	font-family: 'Roboto light', sans-serif;
+	margin-left: 8px;
 }
 
-.menu:before {
-  content: "[";
+h2{
+		font-family: 'Roboto', sans-serif;
+		margin-left: 8px;
+
 }
 
-.menu:after {
-  content: "]";
+body{
+
+	background-color: #EEEEEE;
 }
 
-.menu > li {
-  display: inline;
+.telhaiLogo{
+
+	float: right;
 }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
+.height30px{
+
+	height: 8px;
+	background-color: #65a739;
 }
 
-#map {
-  height: 500px;
-  width: 90%;
-  text-align: center;
-  margin: 20px;
+.googleMap{
+
+	float: right;
+	width: 58%;
+	border: 5px solid #65a739;
 }
 
+.height750px{
 
-.right_map{
-  background: #efefef;
-  width: 55%;
-  float: right;
+	height: 750px;
 }
 
-.left_filter{
-  width: 35%;
-  float: left;
-}
-.center{
-  width: 100%;
+.mapFilters{
+
+	width: 40%;
+	/*background-color: #E8F5E9;*/
+
 }
 
-.filter_title {
-  margin: 20px;
+.borderBottom50p{
+
+	border-bottom: 8px solid;
+	max-width: 50%;
+	padding-top: 5px;
+
 }
 
-.map_title{
-  margin: 20px;
-}
+.footerOne{
 
-.nav_bar{
-  height: 50px;
-  background: #2b669a;
-}
-
-nav_title{
-  color:#FFFFFF;
+	height: 30px;
+	color: #65a739;
 }
