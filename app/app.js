@@ -1,14 +1,21 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('TelHaiMaps', [
-  'ngRoute',
-  'ngAnimate',
-  'uiGmapgoogle-maps',
-  'TelHaiMaps.controllers'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+var app = angular.module("TelHaiMaps", [
+	'ngMap'
+]);
+
+app.controller('test', function(rectangle) {
+
+	rectangle.addListener('bounds_changed', showNewRect);
+
+	function showNewRect(event) {
+		var ne = rectangle.getBounds().getNorthEast();
+		var sw = rectangle.getBounds().getSouthWest();
+	}
+
+
+
+
+});
