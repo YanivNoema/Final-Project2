@@ -8,7 +8,10 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="app.js"></script>
 		
-		<!-- google map -->
+<!-- 	
+		GOOGLE MAPS SECTION 	
+		API key: IzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY
+ -->
 		<script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
 		<script src="http://maps.google.com/maps/api/js"></script>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -24,33 +27,78 @@
 	</head>
 
 	<body>
+
 	<div class="row height30px"></div>
 	<div class="container">
 		<div class="row">
 			<img class="telhaiLogo" src="http://moodle.telhai.ac.il/theme/clean_telhai/pix/img/logo1.png">
 			<img class="telhaiLogo" src="http://moodle.telhai.ac.il/theme/clean_telhai/pix/img/logo2.png">
-
-			<h1>Tel-Hai Maps Website  {{rectangle}}</h1>
-
+			<h1>Tel-Hai Maps Website</h1>
 		</div>
-
 	<div class="row height30px"></div>
 
 
-		<div class="row">
+	<div class="row height600px">
+		<div class="googleMap" id="map"></div>
+		<map-diretive></map-diretive>
+    	<script>
+      // This example adds a user-editable rectangle to the map.
+      // When the user changes the bounds of the rectangle,
+      // an info window pops up displaying the new bounds.
+
+      var rectangle;
+      var map;
+      var infoWindow;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 31.046051, lng: 34.85161199999993},
+          zoom: 8
+        });
+
+        var bounds = {
+          north: 31.78,
+          south: 31.086051,
+          east: 35.1,
+          west: 34.746051
+        };
+
+        // Define the rectangle and set its editable property to true.
+        rectangle = new google.maps.Rectangle({
+          bounds: bounds,
+          editable: true,
+          draggable: true
+        });
+
+        rectangle.setMap(map);
+
+        // Add an event listener on the rectangle.
+       rectangle.addListener('bounds_changed', showNewRect);
+
+        // Define an info window on the map.
+        infoWindow = new google.maps.InfoWindow();
+      }
+      // Show the new coordinates for the rectangle in an info window.
+
+      /** @this {google.maps.Rectangle} */
+      function showNewRect(event) {
+         document.write(rectangle.getBounds());
+      }
+
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY&callback=initMap">
+    </script>
+<!-- 
 			<div class="googleMap">
 			  <ng-map class="height750px" zoom="8" center="[31.046051,34.85161199999993]">
          		<shape name="rectangle" editable="true" draggable="true" bounds="[ [32,34.5], [31.1,35] ]"></shape>
  			  </ng-map>
-
-
-
-
-
-
 			</div>
+ -->
 
-			<div class="mapFilters height750px">
+
+			<div class="mapFilters height600px">
 				<h2 class="borderBottom50p">Filters Goes Here</h2>
 			</div>
 		</div>

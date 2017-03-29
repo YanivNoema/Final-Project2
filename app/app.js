@@ -6,16 +6,11 @@ var app = angular.module("TelHaiMaps", [
 	'ngMap'
 ]);
 
-app.controller('test', function(rectangle) {
+app.directive('map-diretive', function(){
+ return {
 
-	rectangle.addListener('bounds_changed', showNewRect);
+ 	restrict: 'E',
+ 	templateUrl: 'map-diretive.html'
 
-	function showNewRect(event) {
-		var ne = rectangle.getBounds().getNorthEast();
-		var sw = rectangle.getBounds().getSouthWest();
-	}
-
-
-
-
+ };
 });

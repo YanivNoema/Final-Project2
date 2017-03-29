@@ -28,19 +28,21 @@ body{
 }
 
 .googleMap{
-
+	margin: 5px;
 	float: right;
 	width: 58%;
 	border: 5px solid #65a739;
+	height: 750px;
 }
 
-.height750px{
+.height600px{
 
-	height: 750px;
+	height: 600px;
 }
 
 .mapFilters{
 
+	float: left;
 	width: 40%;
 	/*background-color: #E8F5E9;*/
 
@@ -54,8 +56,6 @@ body{
 
 }
 
-.footerOne{
-
-	height: 30px;
-	color: #65a739;
-}
+      #map {
+        height: 100%;
+      }
