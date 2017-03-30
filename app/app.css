@@ -1,38 +1,63 @@
 /* app css stylesheet */
 
-h1{
-	font-family: 'Roboto light', sans-serif;
-	margin-left: 8px;
-}
-
-h2{
-		font-family: 'Roboto', sans-serif;
-		margin-left: 8px;
-
-}
-
 body{
 
-	background-color: #EEEEEE;
+	background-color: #fff;
 }
 
-.telhaiLogo{
 
-	float: right;
+*{
+	font-family: 'Ubuntu', sans-serif;
+
 }
 
-.height30px{
+.bodyWidth{
 
-	height: 8px;
-	background-color: #65a739;
+	width: 80%; 
 }
 
-.googleMap{
-	margin: 5px;
-	float: right;
-	width: 58%;
-	border: 5px solid #65a739;
-	height: 750px;
+
+
+.israelMap{
+	border: 2px solid #00BFA5;
+    margin-top: 57px;
+    height: 650px;
+}
+
+
+.mapTittle{
+
+    color: #fff;
+    padding: 10px;
+    padding-bottom: 30px;
+    padding-top: 20px;
+    background: #00897b;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.filterTittle{
+	color: #607D8B;
+	padding: 5px;
+    font-size: 18px;
+
+}
+
+.containerMap{
+
+	height: 680px;
+}
+
+.containerBig{
+
+	margin: 15px;
+	background-color: #FAFAFA;
+	border: 1px solid #00897b;
+}
+
+.mapHeight{
+
+	height: 550px;
 }
 
 .height600px{
@@ -42,20 +67,50 @@ body{
 
 .mapFilters{
 
-	float: left;
-	width: 40%;
 	/*background-color: #E8F5E9;*/
 
 }
 
-.borderBottom50p{
+#map {
+	height: 100%;
+}
 
-	border-bottom: 8px solid;
-	max-width: 50%;
-	padding-top: 5px;
+.navbar-brand{
+	height: auto !important;
+    padding: 10px 4px !important;
+}
+
+.navbar-default{
+
+	border-bottom: 1px #CFD8DC solid !important;
+}
+
+.footer{
+	margin: 15px;
+	background-color: #FAFAFA;
+	border: 1px solid #00897b;
 
 }
 
-      #map {
-        height: 100%;
-      }
+.custom-nav{
+	margin-bottom:0px !important;
+	border-top: 1px solid #00897b;
+}
+
+.footer-text{
+	padding-top: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+a:hover, a:visited {
+
+	text-decoration: none !important;
+}
+
+.menuDecoration{
+
+	padding-left: 15px;
+	padding-right: 13px;
+	border-right: 1px solid #00897b;
+}

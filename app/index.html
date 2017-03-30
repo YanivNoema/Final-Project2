@@ -2,7 +2,7 @@
 <html lang="en-US" ng-app="TelHaiMaps">
 	<head>
 
-		<title>מפות תל חי</title>
+		<title>Tel-Hai Maps Archive</title>
 		<link rel="shortcut icon" href="http://www.telhai.ac.il/sites/all/themes/th_bootstrap/favicon.ico" type="image/vnd.microsoft.icon">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
@@ -20,89 +20,122 @@
 
 
 		<link rel="stylesheet" type="text/css" href="app.css">
-    	<link href="bower_components/bootstrap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+<!-- 
+			fonts
+ -->
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
 	</head>
 
 	<body>
+		<nav class="navbar navbar-default">
+		  <div class="container">
+				    <div class="navbar-header">
+				      <a class="navbar-brand" href="http://www.telhai.ac.il/">
+				        <img alt="Tel-Hai-logo" src="http://moodle.telhai.ac.il/theme/clean_telhai/pix/img/logo1en.png" width="70px" height="auto">
+				      </a>
+					      <p class="navbar-text navbar-right"><a href="http://moodle.telhai.ac.il/course/view.php?id=4475" class="navbar-link">Tel-Hai Library</a></p>
+				      <p class="navbar-text navbar-right menuDecoration"><a href="http://english.telhai.ac.il/" class="navbar-link">Tel-Hai College</a></p>
 
-	<div class="row height30px"></div>
-	<div class="container">
-		<div class="row">
-			<img class="telhaiLogo" src="http://moodle.telhai.ac.il/theme/clean_telhai/pix/img/logo1.png">
-			<img class="telhaiLogo" src="http://moodle.telhai.ac.il/theme/clean_telhai/pix/img/logo2.png">
-			<h1>Tel-Hai Maps Website</h1>
-		</div>
-	<div class="row height30px"></div>
+			    </div>
+		    </div>
+	    </nav>
 
-
-	<div class="row height600px">
-		<div class="googleMap" id="map"></div>
-		<map-diretive></map-diretive>
-    	<script>
-      // This example adds a user-editable rectangle to the map.
-      // When the user changes the bounds of the rectangle,
-      // an info window pops up displaying the new bounds.
-
-      var rectangle;
-      var map;
-      var infoWindow;
-
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 31.046051, lng: 34.85161199999993},
-          zoom: 8
-        });
-
-        var bounds = {
-          north: 31.78,
-          south: 31.086051,
-          east: 35.1,
-          west: 34.746051
-        };
-
-        // Define the rectangle and set its editable property to true.
-        rectangle = new google.maps.Rectangle({
-          bounds: bounds,
-          editable: true,
-          draggable: true
-        });
-
-        rectangle.setMap(map);
-
-        // Add an event listener on the rectangle.
-       rectangle.addListener('bounds_changed', showNewRect);
-
-        // Define an info window on the map.
-        infoWindow = new google.maps.InfoWindow();
-      }
-      // Show the new coordinates for the rectangle in an info window.
-
-      /** @this {google.maps.Rectangle} */
-      function showNewRect(event) {
-         document.write(rectangle.getBounds());
-      }
-
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY&callback=initMap">
-    </script>
-<!-- 
-			<div class="googleMap">
-			  <ng-map class="height750px" zoom="8" center="[31.046051,34.85161199999993]">
-         		<shape name="rectangle" editable="true" draggable="true" bounds="[ [32,34.5], [31.1,35] ]"></shape>
- 			  </ng-map>
-			</div>
- -->
-
-
-			<div class="mapFilters height600px">
-				<h2 class="borderBottom50p">Filters Goes Here</h2>
+		<div class="container">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<p class="mapTittle">Please place the black rectangle upon the desired area on Isreal map</p>
 			</div>
 		</div>
-	</div>
+
+		<div class="section">
+			<div class="container">
+				<div class="row height680px col-xs-12 col-sm-12 col-md-12 col-lg-12 containerBig">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mapFilters">
+						<p class="filterTittle">Filters Goes Here</p>
+					</div>
+					
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
+						<p class="mapTittle">Please place the black rectangle upon the desired area on Isreal map</p>
+						<div class="mapHeight">
+							<div class="" id="map"></div>
+						</div>
+						
+					</div>			
+						
+					
+
+					<!-- <map-diretive></map-diretive> -->
+			    	<script>
+			      // This example adds a user-editable rectangle to the map.
+			      // When the user changes the bounds of the rectangle,
+			      // an info window pops up displaying the new bounds.
+
+				      var rectangle;
+				      var map;
+				      var infoWindow;
+
+				      function initMap() {
+				        map = new google.maps.Map(document.getElementById('map'), {
+				          center: {lat: 31.046051, lng: 34.85161199999993},
+				          zoom: 8
+				        });
+
+				        var bounds = {
+				          north: 31.78,
+				          south: 31.086051,
+				          east: 35.1,
+				          west: 34.746051
+				        };
+
+				        // Define the rectangle and set its editable property to true.
+				        rectangle = new google.maps.Rectangle({
+				          bounds: bounds,
+				          editable: true,
+				          draggable: true
+				        });
+
+				        rectangle.setMap(map);
+
+				        // Add an event listener on the rectangle.
+				       rectangle.addListener('bounds_changed', showNewRect);
+
+				        // Define an info window on the map.
+				        infoWindow = new google.maps.InfoWindow();
+				      }
+				      // Show the new coordinates for the rectangle in an info window.
+
+				      /** @this {google.maps.Rectangle} */
+				      function showNewRect(event) {
+				         document.write(rectangle.getBounds());
+				      }
+
+				    </script>
+				    <script async defer
+				    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY&callback=initMap">
+				    </script>
+		<!-- 
+					<div class="googleMap">
+					  <ng-map class="height750px" zoom="8" center="[31.046051,34.85161199999993]">
+		         		<shape name="rectangle" editable="true" draggable="true" bounds="[ [32,34.5], [31.1,35] ]"></shape>
+		 			  </ng-map>
+					</div>
+		 -->
+
+
+				
+					</div>
+
+				</div>
+			</div>
+
+			<nav class="navbar navbar-default custom-nav">
+			  <div class="container">			   
+			    	<p class="footer-text">The Website Made By </br> <a href="https://www.linkedin.com/in/shay-vatarescu-549078131/">Shay Vatarescu</a> & <a href="https://www.linkedin.com/in/yanivnoema/"> Yaniv Noema</a> </br> For Tel-Hai Academic College, as a Final Project</p>  
+			    </div>
+		    </nav>
+
 
 	</body>
 
