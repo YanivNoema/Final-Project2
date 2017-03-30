@@ -6,11 +6,11 @@ var app = angular.module("TelHaiMaps", [
 	'ngMap'
 ]);
 
-app.directive('map-diretive', function(){
+/*app.directive('map-diretive', function(){
  return {
 
  	restrict: 'E',
  	templateUrl: 'map-diretive.html'
 
  };
-});
+});*/
