@@ -12,8 +12,8 @@
 		GOOGLE MAPS SECTION 	
 		API key: IzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY
  -->
-		<script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-		<script src="http://maps.google.com/maps/api/js"></script>
+		<!-- <script src="/bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+		 --><script src="http://maps.google.com/maps/api/js"></script>
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
 
@@ -43,11 +43,11 @@
 		    </div>
 	    </nav>
 
-		<div class="container">
+<!-- 		<div class="container">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<p class="mapTittle">Please place the black rectangle upon the desired area on Isreal map</p>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="section">
 			<div class="container">
@@ -57,16 +57,19 @@
 					</div>
 					
 					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
-						<p class="mapTittle">Please place the black rectangle upon the desired area on Isreal map</p>
-						<div class="mapHeight">
-							<div class="" id="map"></div>
+						<div class="upperMap">
+							<p class="mapTittle">Please place or resize the black rectangle upon the desired area on Isreal map or insert the specfic coordinate</p>	
+					</div>
+					<div ng-controller="mapController">
+						<resize-rectangle></resize-rectangle>
+								
+						<div class="mapHeight col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div id="map"></div>
 						</div>
-						
-					</div>			
-						
+							
 					
 
-					<!-- <map-diretive></map-diretive> -->
+					
 			    	<script>
 			      // This example adds a user-editable rectangle to the map.
 			      // When the user changes the bounds of the rectangle,
@@ -84,9 +87,9 @@
 
 				        var bounds = {
 				          north: 31.78,
-				          south: 31.086051,
-				          east: 35.1,
-				          west: 34.746051
+				          south: 31.08,
+				          east: 35.12,
+				          west: 34.74
 				        };
 
 				        // Define the rectangle and set its editable property to true.
@@ -108,24 +111,38 @@
 
 				      /** @this {google.maps.Rectangle} */
 				      function showNewRect(event) {
-				         document.write(rectangle.getBounds());
+		                 var ne = rectangle.getBounds().getNorthEast();
+				         var sw = rectangle.getBounds().getSouthWest();
+
+	                 	 document.getElementById('north').value = ne.lat();
+	                 	 document.getElementById('east').value = ne.lng();
+	                 	 document.getElementById('south').value = sw.lat();
+	                 	 document.getElementById('west').value = sw.lng();				 
 				      }
+
+						document.addEventListener('input', function (evt) {
+						    var north = parseFloat(document.getElementById('north').value);
+						    var south = parseFloat(document.getElementById('south').value);
+						    var east = parseFloat(document.getElementById('east').value);
+						    var west = parseFloat(document.getElementById('west').value);
+
+/*							document.write(north + south + east + west);
+*/						    if (!isNaN(north) && !isNaN(south) && !isNaN(west) && !isNaN(east)) {
+						        var NE = new google.maps.LatLng(north, east);
+						        var SW = new google.maps.LatLng(south, west);
+						        var newRect = new google.maps.LatLngBounds(SW,NE);
+						        rectangle.setBounds(newRect);
+						        map.fitBounds(newRect);
+						    }
+						});
 
 				    </script>
 				    <script async defer
-				    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY&callback=initMap">
-				    </script>
-		<!-- 
-					<div class="googleMap">
-					  <ng-map class="height750px" zoom="8" center="[31.046051,34.85161199999993]">
-		         		<shape name="rectangle" editable="true" draggable="true" bounds="[ [32,34.5], [31.1,35] ]"></shape>
-		 			  </ng-map>
+				    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY&callback=initMap">
+				    </script>	
 					</div>
-		 -->
+				</div>
 
-
-				
-					</div>
 
 				</div>
 			</div>

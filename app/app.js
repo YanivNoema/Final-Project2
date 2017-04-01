@@ -2,15 +2,12 @@
 
 // Declare app level module which depends on views, and components
 
-var app = angular.module("TelHaiMaps", [
-	'ngMap'
-]);
+var app = angular.module("TelHaiMaps", []);
 
-/*app.directive('map-diretive', function(){
- return {
+app.directive('resizeRectangle', function(){
+	return{
+		restrict: 'E',
+		templateUrl: 'resize-rectangle.html'
 
- 	restrict: 'E',
- 	templateUrl: 'map-diretive.html'
-
- };
-});*/
+	};
+});

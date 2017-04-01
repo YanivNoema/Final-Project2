@@ -24,16 +24,18 @@ body{
     height: 650px;
 }
 
+.upperMap{
+
+	   background: #00897b;
+	   border-radius: 4px; 
+}
 
 .mapTittle{
 
     color: #fff;
-    padding: 10px;
-    padding-bottom: 30px;
-    padding-top: 20px;
-    background: #00897b;
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 10px;
+    padding: 15px;
 }
 
 .filterTittle{
@@ -57,22 +59,18 @@ body{
 
 .mapHeight{
 
-	height: 550px;
+	height: 580px;
+	padding-top: 10px;
 }
 
-.height600px{
+.height680px{
 
-	height: 600px;
-}
-
-.mapFilters{
-
-	/*background-color: #E8F5E9;*/
-
+	height: 780px;
 }
 
 #map {
 	height: 100%;
+	border: 1px #00897b solid;
 }
 
 .navbar-brand{
@@ -113,4 +111,27 @@ a:hover, a:visited {
 	padding-left: 15px;
 	padding-right: 13px;
 	border-right: 1px solid #00897b;
+}
+
+.rightNumberForm{
+    float: right !important;
+    width: 75% !important;
+}
+
+.leftLabelForm{
+
+	float: left !important;
+	padding-top: 6px !important;
+	color: #00897b;
+}
+
+.disablePaddingRight{
+
+	padding-right: 0px !important;
+}
+
+.form-control{
+
+	color: #9E9E9E !important;
+	border: 1px solid #9E9E9E !important;
 }
