@@ -1,24 +1,15 @@
-/* app css stylesheet */
+/*MAP VIEW*/
 
-body{
+#map {
 
-	background-color: #fff;
+    height: 97% !important;
+    display: block;
+	height: 100%;
+	border: 1px #00897b solid;
 }
-
-
-*{
-	font-family: 'Ubuntu', sans-serif;
-
-}
-
-.bodyWidth{
-
-	width: 80%; 
-}
-
-
 
 .israelMap{
+
 	border: 2px solid #00BFA5;
     margin-top: 57px;
     height: 650px;
@@ -39,6 +30,7 @@ body{
 }
 
 .filterTittle{
+
 	color: #607D8B;
 	padding: 5px;
     font-size: 18px;
@@ -53,57 +45,46 @@ body{
 .containerBig{
 
 	margin: 15px;
-	background-color: #FAFAFA;
+	background-color: #fff;
 	border: 1px solid #00897b;
 }
 
 .mapHeight{
 
-	height: 580px;
+	height: 440px;
 	padding-top: 10px;
 }
 
-.height680px{
+/*FOOTER*/
 
-	height: 780px;
-}
+.footerStickBottom{
 
-#map {
-	height: 100%;
-	border: 1px #00897b solid;
-}
-
-.navbar-brand{
-	height: auto !important;
-    padding: 10px 4px !important;
-}
-
-.navbar-default{
-
-	border-bottom: 1px #CFD8DC solid !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 100% !important;
 }
 
 .footer{
+
 	margin: 15px;
 	background-color: #FAFAFA;
 	border: 1px solid #00897b;
 
 }
 
-.custom-nav{
-	margin-bottom:0px !important;
-	border-top: 1px solid #00897b;
-}
-
 .footer-text{
-	padding-top: 10px;
+
     text-align: center;
     font-size: 14px;
+    padding-top: 5px;
 }
 
-a:hover, a:visited {
 
-	text-decoration: none !important;
+/*NAV & MENU*/
+.custom-nav{
+
+	margin-bottom:0px !important;
+	border-top: 1px solid #00897b;
 }
 
 .menuDecoration{
@@ -111,6 +92,19 @@ a:hover, a:visited {
 	padding-left: 15px;
 	padding-right: 13px;
 	border-right: 1px solid #00897b;
+}
+
+
+/*LOGIN VIEW*/
+.loginBar{
+
+	font-weight: bold;
+	color: #00897b !important;
+}
+
+.loginBar:hover{
+
+	color: #333 !important;
 }
 
 .rightNumberForm{
@@ -125,13 +119,69 @@ a:hover, a:visited {
 	color: #00897b;
 }
 
-.disablePaddingRight{
 
-	padding-right: 0px !important;
-}
 
 .form-control{
 
 	color: #9E9E9E !important;
 	border: 1px solid #9E9E9E !important;
 }
+
+.formBox {
+    
+    margin: auto;
+    margin: : 15px;
+}
+
+
+
+.loginPage{
+
+	height: 100%;
+    background-color: #f8f8f8;
+}
+
+.connectButton{
+
+	background: #028a7c;
+    color: white;
+}
+
+.connectButton:hover{
+	
+	background: #02aa7c;
+	color: white !important;
+}
+
+.insertButton{
+
+	background: #028a7c;
+    color: white;
+}
+
+.insertButton:hover{
+	
+	background: #02aa7c;
+	color: white !important;
+}
+
+
+.addMoreCoordinateText{
+
+	float: right;
+	padding-top: 6px !important;
+	color: #00897b;
+}
+
+.loginTittle{
+
+	font-weight: bold;
+}
+
+
+.navbar-text-pand-right{
+
+	right: 100%;
+    position: relative;
+}
+
