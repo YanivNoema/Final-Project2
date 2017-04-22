@@ -39,10 +39,33 @@
 			</div>					
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
 				<div class="upperMap">
-					<p class="mapTittle">Please place or resize the black rectangle upon the desired area on Isreal map or insert the specfic coordinate</p>	
+					<p class="mapTittle">Place the ractangle on the map or choose from the coordinate below</p>	
 				</div>
-				<div>
-					<resize-rectangle></resize-rectangle>							
+				<div ng-controller="mapCntlr">
+					<div class="form-group row">
+						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
+								<p class="itmTittle">ITM projection:</p>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">ITM-X:</label>
+						    		<input id="itmxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')" step="100">	
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">ITM-Y:</label>
+						    		<input id="itmyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')" step="1000">	
+								</div>
+						</div>
+						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
+								<p class="itmTittle">WGS80 projection:</p>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">WGS84-NE:</label>
+						    		<input id="wgsxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">WGS84-SW:</label>
+						    		<input id="wgsyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+						</div>
+					</div>									
 					<div class="mapHeight col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<map-canvas id="map"></map-canvas>
 					</div>	

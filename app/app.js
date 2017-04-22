@@ -22,13 +22,13 @@ app.config(function($routeProvider) {
 
 
 /*DIRECTIVES*/
-app.directive('resizeRectangle', function(){
+/*app.directive('resizeRectangle', function(){
 	return{
 		restrict: 'E',
 		templateUrl: 'resize-rectangle.html'
 
 	};
-});
+});*/
 
 app.directive('navMenu', function(){
 	return{
@@ -64,24 +64,26 @@ app.controller('mapCntlr', ['$scope', function($scope,element) {
 	$scope.itmy = '';
 	$scope.wgsNE = '';
 	$scope.wgsSW = '';
-	$scope.baseCoordinates = "31.768319 35.21370999999999";
+	$scope.baseCoordinates = "31.77 35.22";
 
 	var map;
 	var Israel;
 	var rectangle;
 
-	Israel = new google.maps.LatLng(31.768319, 35.21370999999999);
+	Israel = new google.maps.LatLng(31.77, 35.22);
 
 	map = new google.maps.Map(document.getElementById('map'), {
 	center: Israel,
-	zoom: 8
+	zoom: 9,
+	editable: true,
+	draggable: true
 	});
 
 	var bounds = {
-	north: 31.78,
-	south: 31.08,
-	east: 35.12,
-	west: 34.74
+	north: 31.77,
+	south: 31.98,
+	east: 35.22,
+	west: 34.85
 	};
 
 	// Define the rectangle and set its editable property to true.
@@ -96,40 +98,87 @@ app.controller('mapCntlr', ['$scope', function($scope,element) {
 	// Add an event listener on the rectangle.
 	rectangle.addListener('bounds_changed', showNewRect);
 
-	function showNewRect(event) {
-
-		var nelat = rectangle.getBounds().getNorthEast().lat();
-		var nelng = rectangle.getBounds().getNorthEast().lng();
-		var sw = rectangle.getBounds().getSouthWest();
-
-		var curwgs =JSITM.gpsRef2itmRef(nelat + ' ' + nelng);
-		$scope.itmx = curwgs.split(' ')[0];
-		$scope.itmy = curwgs.split(' ')[1];
-		$scope.wgsNE = ne;
-		$scope.wgsSW = sw;				 
-	}
-
 	$scope.init = function(){
-			var curwgs = JSITM.gpsRef2itmRef("31.768319 35.21370999999999");
+			var curwgs = JSITM.gpsRef2itmRef("31.77 35.22");
 		  	$scope.itmx = curwgs.split(" ")[0];
 		  	$scope.itmy = curwgs.split(" ")[1];
 		  	$scope.wgsNE = $scope.baseCoordinates.split(" ")[0];
 			$scope.wgsSW = $scope.baseCoordinates.split(" ")[1];
 	}
 
+	function showNewRect(event) {
+	
+		updateAllCoordiantes();
+	}
+
+	function updateAllCoordiantes(){
+
+		var ne = rectangle.getBounds().getNorthEast();
+		var curwgs =JSITM.gpsRef2itmRef(ne.lat() + " " + ne.lng());
+		
+		var toITMx = curwgs.split(' ')[0];
+		var toITMy = curwgs.split(' ')[1];
+		var toWGSne = ne.lat();
+		var toWGSsw = ne.lng();
+
+		document.getElementById('itmxID').value = toITMx;
+		document.getElementById('itmyID').value = toITMy;
+		document.getElementById('wgsxID').value = toWGSne;
+		document.getElementById('wgsyID').value = toWGSsw;
+	}
+
 	$scope.updateValues = function(source){
 		if(source === 'itm'){
-			var curItm = JSITM.itmRef2gpsRef($scope.itmx + " " + $scope.itmy);
-			$scope.wgsNE = curItm.split(" ")[0];
-		  	$scope.wgsSW = curItm.split(" ")[1];
+			
+			var coord = JSITM.itmRef2gpsRef((Math.floor($scope.itmx)).toString() + (Math.floor($scope.itmy)).toString());
+			var coordX  = coord.split(" ")[0];
+			var coordY  = coord.split(" ")[1];
+			$scope.wgsNE = coordX;
+		  	$scope.wgsSW = coordY;
 
 		}else if(source === 'wgs'){
 		  	var curwgs = JSITM.gpsRef2itmRef($scope.wgsNE + " " + $scope.wgsSW);
+
 		  	$scope.itmx = curwgs.split(" ")[0];
 		  	$scope.itmy = curwgs.split(" ")[1];
 		}
+
+		var north =  parseFloat($scope.wgsNE);
+		var south =  parseFloat(north - 0.21);
+
+		var east =  parseFloat($scope.wgsSW);
+		var west = parseFloat(east - 0.37);
+    	
+
+    	if (!isNaN(north) && !isNaN(south) && !isNaN(west) && !isNaN(east)) {
+			var NE = new google.maps.LatLng(north, east);
+			var SW = new google.maps.LatLng(south, west);
+			var newRect = new google.maps.LatLngBounds(SW,NE);
+			rectangle.setBounds(newRect);
+			map.fitBounds(newRect);
+		}
 	}
+
 	$scope.init();
 }]);
 
 
+app.directive('stringToNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, element, attrs, ngModel) {
+      ngModel.$parsers.push(function(value) {
+        return '' + value;
+      });
+      ngModel.$formatters.push(function(value) {
+        return parseFloat(value);
+      });
+    }
+  };
+});
+
+app.run(function($rootScope) {
+  $rootScope.typeOf = function(value) {
+    return typeof value;
+  };
+})

@@ -12,6 +12,13 @@ a:hover, a:visited {text-decoration: none !important;}
 
 /* ! IMPORTANT */
 
+.form-control{
+
+	color: #9E9E9E !important;
+	border: 1px solid #9E9E9E !important;
+	max-width: 60% !important;
+}
+
 .navbar{margin-bottom: 0px !important;}
 .navbar-default{border-bottom: 1px #CFD8DC solid !important;}
 

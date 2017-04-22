@@ -51,19 +51,19 @@
 
 .mapHeight{
 
-	height: 440px;
-	padding-top: 10px;
+	height: 420px;
+	padding-top: 8px;
 }
 
 /*FOOTER*/
 
-.footerStickBottom{
+/*.footerStickBottom{
 
     position: absolute !important;
     bottom: 0 !important;
     width: 100% !important;
 }
-
+*/
 .footer{
 
 	margin: 15px;
@@ -118,14 +118,6 @@
 	padding-top: 6px !important;
 	color: #00897b;
 	font-size: 12px;
-}
-
-
-
-.form-control{
-
-	color: #9E9E9E !important;
-	border: 1px solid #9E9E9E !important;
 }
 
 .formBox {
@@ -186,3 +178,11 @@
     position: relative;
 }
 
+.itmTittle{
+    font-weight: bold;
+    color: grey;
+    font-size: 10px;
+    left: 3%;
+    position: relative;
+    margin-bottom: 4px
+}
