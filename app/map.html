@@ -1,0 +1,150 @@
+<div class="section">
+	<div class="container">
+		<div class="row height680px col-xs-12 col-sm-12 col-md-12 col-lg-12 containerBig">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mapFilters">
+				<p class="filterTittle">Filters Goes Here</p>
+				<div class="row" style="margin-bottom: 10px; padding-left: 10px">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 no-padding">
+								Scale Filter:
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
+								<span class="scale-prefix">1:<input type="number" name="scaleMin" min="2500" max="1000000" step="500"></span>
+							</div>
+							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
+								<span class="scale-prefix">1:<input type="number" name="scaleMax" min="2500" max="1000000" step="500"></span>
+							</div>
+						</div>
+						<div class="row" style="padding-left: 10px">
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 no-padding">
+								Year Filter:
+							</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
+								<input type="number" name="yearMin" min="1850" max="2017" style="min-width: 132px;">
+							</div>
+							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>
+							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
+								<input type="number" name="yearMax" min="1850" max="2017" style="min-width: 132px;">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-controller="tableController">
+								<div id="grid" ui-grid="gridOptions" class="grid" style="height:500px; top: 0; bottom: 0;"
+									 ui-grid-selection ui-grid-resize-columns></div>
+								<!-- <div ng-controller="tableController">
+									<div id="grid1" ui-grid="{ data: myData }" class="grid"></div>
+								</div> -->
+							</div>
+						</div>
+			</div>					
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
+				<div class="upperMap">
+					<p class="mapTittle">Place the ractangle on the map or choose from the coordinate below</p>	
+				</div>
+				<div ng-controller="mapCntlr">
+					<div class="form-group row">
+						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
+								<p class="itmTittle">ITM projection:</p>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">ITM-X:</label>
+						    		<input id="itmxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')" step="100">	
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">ITM-Y:</label>
+						    		<input id="itmyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')" step="1000">	
+								</div>
+						</div>
+						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
+								<p class="itmTittle">WGS80 projection:</p>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">WGS84-NE:</label>
+						    		<input id="wgsxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">WGS84-SW:</label>
+						    		<input id="wgsyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+						</div>
+					</div>									
+					<div class="mapHeight col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<map-canvas id="map"></map-canvas>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- 
+		<script type="text/javascript">
+						// This example adds a user-editable rectangle to the map.
+						// When the user changes the bounds of the rectangle,
+						// an info window pops up displaying the new bounds.
+
+						var rectangle;
+						var map;
+						var Israel;
+
+						function initMap() {
+
+							Israel = new google.maps.LatLng(31.768319, 35.21370999999999);
+
+							map = new google.maps.Map(document.getElementById('map'), {
+							center: Israel,
+							zoom: 8
+							});
+
+							var bounds = {
+							north: 31.78,
+							south: 31.08,
+							east: 35.12,
+							west: 34.74
+							};
+
+
+						    console.log(Israel.lat());
+
+						    console.log(Israel.lng());
+
+							// Define the rectangle and set its editable property to true.
+							rectangle = new google.maps.Rectangle({
+								bounds: bounds,
+								editable: true,
+								draggable: true
+							});
+
+							rectangle.setMap(map);
+
+							// Add an event listener on the rectangle.
+							rectangle.addListener('bounds_changed', showNewRect);
+						}
+
+							/** @this {google.maps.Rectangle} */
+						function showNewRect(event) {
+							var ne = rectangle.getBounds().getNorthEast();
+							var sw = rectangle.getBounds().getSouthWest();
+
+							document.getElementById('north').value = ne.lat();
+							document.getElementById('east').value = ne.lng();
+							document.getElementById('south').value = sw.lat();
+							document.getElementById('west').value = sw.lng();				 
+						}
+
+						document.addEventListener('input', function (evt) {
+							var north = parseFloat(document.getElementById('north').value);
+							var south = parseFloat(document.getElementById('south').value);
+							var east = parseFloat(document.getElementById('east').value);
+							var west = parseFloat(document.getElementById('west').value);
+
+					    	if (!isNaN(north) && !isNaN(south) && !isNaN(west) && !isNaN(east)) {
+								var NE = new google.maps.LatLng(north, east);
+								var SW = new google.maps.LatLng(south, west);
+								var newRect = new google.maps.LatLngBounds(SW,NE);
+								rectangle.setBounds(newRect);
+								map.fitBounds(newRect);
+							}
+						});
+						
+
+
+						</script> -->
