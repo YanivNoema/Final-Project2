@@ -1,7 +1,9 @@
 'use strict';
 
+/*DEFINE ANGULAR MODULE*/
 var app = angular.module("TelHaiMaps", ["ngRoute"]);
 
+/*ROUTING*/
 app.config(function($routeProvider) {
     $routeProvider
     .when("/", {
@@ -12,6 +14,8 @@ app.config(function($routeProvider) {
     });
 });
 
+
+/*DIRECTIVES*/
 app.directive('resizeRectangle', function(){
 	return{
 		restrict: 'E',
@@ -19,6 +23,23 @@ app.directive('resizeRectangle', function(){
 
 	};
 });
+
+app.directive('navMenu', function(){
+	return{
+		restrict: 'E',
+		templateUrl: 'nav-menu.html'
+
+	};
+});
+
+app.directive('navFooter', function(){
+	return{
+		restrict: 'E',
+		templateUrl: 'nav-footer.html'
+
+	};
+});
+
 
 app.directive('mapCanvas', function() {
     return {
@@ -59,7 +80,9 @@ app.directive('mapCanvas', function() {
 
 			function showNewRect(event) {
 
-				var secondProjection = "+proj=tmerc +k_0=1.000006700000000 +lat_0=26.061528 +lon_0=33.011 +x_0=219529.584000000000000 +y_0=626907.389999999900000 +ellps=GRS80 +towgs84=24.0024,17.1032,17.8444,-0.33009,-1.85269,1.66969,-5.4248 +units=m +no_defs";
+				// var ISRAEL_TM_PROJ = 
+
+				var secondProjection = "+proj=tmerc +lat_0=31.73439 +lon_0=35.20452 +k=1.0000067 +x_0=219,529.584 +y_0=626,907.390 +ellps=GRS80 +datum=GRS80	 +units=m +no_defs";
 				/*var secondProjection = "+proj=cass +k_0=1 +lat_0=31.73408333 +lon_0=35.20944444 +x_0=170251.554999999900000 +y_0=1126867.909000000000000 +ellps=clrk66 +units=m +no_defs";
 */
 			/*	var secondProjection = "+proj=merc +lat_0=90 +lon_0=0 +x_0=6300000 +y_0=6300000 +ellps=GRS80 +datum=WGS84 +units=m +no_defs";
@@ -68,12 +91,11 @@ app.directive('mapCanvas', function() {
 				var aa = 56.35;
 				var bb = 12.32;
 
-				var a = 31.768319;
-				var b = 35.21370999999999;
-				var p = proj4(secondProjection,[a,b]);
-				p[0] = p[0] + 50000;
-				p[1] = p[1] + 500000;
+				var lat = 31.768319;
+				var lng = 35.21370999999999;
 
+				var p = proj4(secondProjection,[lat,lng]);
+				
             console.log(p);
 
 				var ne = rectangle.getBounds().getNorthEast();
