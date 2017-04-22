@@ -1,7 +1,13 @@
 'use strict';
 
 /*DEFINE ANGULAR MODULE*/
-var app = angular.module("TelHaiMaps", ["ngRoute"]);
+var app = angular.module("TelHaiMaps", [
+	'ngRoute',
+    'ui.grid',
+    'ui.grid.edit',
+    'ui.grid.resizeColumns',
+    'ui.grid.selection'
+]);
 
 /*ROUTING*/
 app.config(function($routeProvider) {
@@ -44,9 +50,22 @@ app.directive('navFooter', function(){
 app.directive('mapCanvas', function() {
     return {
         restrict: 'E',
+        controller: 'mapCntlr',
         link: function(scope, element) {
 
-			var map;
+        }
+    };
+});
+
+app.controller('mapCntlr', ['$scope', function($scope,element) {
+
+	$scope.itmx = '';
+	$scope.itmy = '';
+	$scope.wgsNE = '';
+	$scope.wgsSW = '';
+	$scope.baseCoordinates = "31.768319 35.21370999999999";
+
+	var map;
 			var Israel;
 			var rectangle;
 
@@ -78,25 +97,10 @@ app.directive('mapCanvas', function() {
 
             new google.maps.Map(element[0], mapOptions);
 
+
 			function showNewRect(event) {
 
-				// var ISRAEL_TM_PROJ = 
-
-				var secondProjection = "+proj=tmerc +lat_0=31.73439 +lon_0=35.20452 +k=1.0000067 +x_0=219,529.584 +y_0=626,907.390 +ellps=GRS80 +datum=GRS80	 +units=m +no_defs";
-				/*var secondProjection = "+proj=cass +k_0=1 +lat_0=31.73408333 +lon_0=35.20944444 +x_0=170251.554999999900000 +y_0=1126867.909000000000000 +ellps=clrk66 +units=m +no_defs";
-*/
-			/*	var secondProjection = "+proj=merc +lat_0=90 +lon_0=0 +x_0=6300000 +y_0=6300000 +ellps=GRS80 +datum=WGS84 +units=m +no_defs";
-	*/
-
-				var aa = 56.35;
-				var bb = 12.32;
-
-				var lat = 31.768319;
-				var lng = 35.21370999999999;
-
-				var p = proj4(secondProjection,[lat,lng]);
-				
-            console.log(p);
+				console.log(this.itmx);
 
 				var ne = rectangle.getBounds().getNorthEast();
 				var sw = rectangle.getBounds().getSouthWest();
@@ -107,9 +111,27 @@ app.directive('mapCanvas', function() {
 				document.getElementById('west').value = sw.lng();				 
 			}
 
+	$scope.init = function(){
+			var curwgs = JSITM.gpsRef2itmRef("31.768319 35.21370999999999");
+		  	$scope.itmx = curwgs.split(" ")[0];
+		  	$scope.itmy = curwgs.split(" ")[1];
+		  	$scope.wgsNE = $scope.baseCoordinates.split(" ")[0];
+			$scope.wgsSW = $scope.baseCoordinates.split(" ")[1];
+	}
 
-        }
-    };
-});
+	$scope.updateValues = function(source){
+		if(source === 'itm'){
+			var curItm = JSITM.itmRef2gpsRef($scope.itmx + " " + $scope.itmy);
+			$scope.wgsNE = curItm.split(" ")[0];
+		  	$scope.wgsSW = curItm.split(" ")[1];
+
+		}else if(source === 'wgs'){
+		  	var curwgs = JSITM.gpsRef2itmRef($scope.wgsNE + " " + $scope.wgsSW);
+		  	$scope.itmx = curwgs.split(" ")[0];
+		  	$scope.itmy = curwgs.split(" ")[1];
+		}
+	}
+	$scope.init();
+}]);
 
 

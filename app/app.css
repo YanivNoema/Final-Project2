@@ -1,3 +1,25 @@
+/*FILTERS*/
+
+.filterTittle{
+	color: #607D8B;
+	padding: 5px;
+    font-size: 18px;
+
+}
+
+
+.filterTittle input{
+	color: #000;
+}
+
+.mapFilters{
+	color: #fff;
+	background-color: #00897b;
+	margin: 10px 0;
+	padding: 18px 0;
+}
+
+
 /*MAP VIEW*/
 
 #map {
