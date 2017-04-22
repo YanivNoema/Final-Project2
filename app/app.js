@@ -52,6 +52,7 @@ app.directive('mapCanvas', function() {
         restrict: 'E',
         controller: 'mapCntlr',
         link: function(scope, element) {
+		    new google.maps.Map(element[0], mapOptions);
 
         }
     };
@@ -66,50 +67,47 @@ app.controller('mapCntlr', ['$scope', function($scope,element) {
 	$scope.baseCoordinates = "31.768319 35.21370999999999";
 
 	var map;
-			var Israel;
-			var rectangle;
+	var Israel;
+	var rectangle;
 
-			Israel = new google.maps.LatLng(31.768319, 35.21370999999999);
+	Israel = new google.maps.LatLng(31.768319, 35.21370999999999);
 
-			map = new google.maps.Map(document.getElementById('map'), {
-			center: Israel,
-			zoom: 8
-			});
+	map = new google.maps.Map(document.getElementById('map'), {
+	center: Israel,
+	zoom: 8
+	});
 
-			var bounds = {
-			north: 31.78,
-			south: 31.08,
-			east: 35.12,
-			west: 34.74
-			};
+	var bounds = {
+	north: 31.78,
+	south: 31.08,
+	east: 35.12,
+	west: 34.74
+	};
 
-			// Define the rectangle and set its editable property to true.
-			rectangle = new google.maps.Rectangle({
-				bounds: bounds,
-				editable: true,
-				draggable: true
-			});
+	// Define the rectangle and set its editable property to true.
+	rectangle = new google.maps.Rectangle({
+		bounds: bounds,
+		editable: true,
+		draggable: true
+	});
 
-			rectangle.setMap(map);
+	rectangle.setMap(map);
 
-			// Add an event listener on the rectangle.
-			rectangle.addListener('bounds_changed', showNewRect);
+	// Add an event listener on the rectangle.
+	rectangle.addListener('bounds_changed', showNewRect);
 
-            new google.maps.Map(element[0], mapOptions);
+	function showNewRect(event) {
 
+		var nelat = rectangle.getBounds().getNorthEast().lat();
+		var nelng = rectangle.getBounds().getNorthEast().lng();
+		var sw = rectangle.getBounds().getSouthWest();
 
-			function showNewRect(event) {
-
-				console.log(this.itmx);
-
-				var ne = rectangle.getBounds().getNorthEast();
-				var sw = rectangle.getBounds().getSouthWest();
-
-				document.getElementById('north').value = ne.lat();
-				document.getElementById('east').value = ne.lng();
-				document.getElementById('south').value = sw.lat();
-				document.getElementById('west').value = sw.lng();				 
-			}
+		var curwgs =JSITM.gpsRef2itmRef(nelat + ' ' + nelng);
+		$scope.itmx = curwgs.split(' ')[0];
+		$scope.itmy = curwgs.split(' ')[1];
+		$scope.wgsNE = ne;
+		$scope.wgsSW = sw;				 
+	}
 
 	$scope.init = function(){
 			var curwgs = JSITM.gpsRef2itmRef("31.768319 35.21370999999999");

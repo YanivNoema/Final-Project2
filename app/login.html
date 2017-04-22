@@ -1,0 +1,34 @@
+<div class="loginPage" ">
+    <div align="center" class="formBox paddingTop2em width30P">
+        <form class="form-signin" role="form" ng-submit="login()">
+            <p class="loginTittle">Please provide your password :</p>
+            <span><input type="password"
+                class="form-control" ng-model="passwordValueCorrect" required> </span>
+            <br>
+            <button class="btn btn-md btn-block connectButton" type="submit">
+                <b>Connect</b>
+            </button>
+        </form>
+    </div>
+</div>
+
+<hr class="hLine">
+
+<div ng-show="passwordValueCorrect">
+    <div align="center" class="formBox width30P">
+        <p font="bold" class="loginTittle">Please insert the new map ID and the corresponding x and y coordinate:</p>
+            <form class="form-signin" role="form" ng-submit="login()">
+                    <input id="mapId" class="form-control" type="number" step="0.00000001" value="" placeholder="Map ID:">   
+                    <br>
+                    <input id="XCoor" class="form-control" type="number" step="0.00000001" value="" placeholder="y coordinate: ">   
+                    <br>
+                    <input id="YCoor" class="form-control" type="number" step="0.00000001" value="" placeholder="x coordinate: ">   
+                 <br>
+                <button class="btn btn-md btn-block insertButton" type="submit">
+                <b>Insert</b>
+            </button>
+        </form>
+    </div>
+</div>
+
+

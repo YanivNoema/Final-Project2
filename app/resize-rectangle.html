@@ -1,0 +1,24 @@
+<div class="form-group row" ng-controller="mapCntlr">
+	<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<label for="example-number-input" class="leftLabelForm">ITM-X:</label>
+	    		<input class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')">	
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+				<label  for="example-number-input" class="leftLabelForm">ITM-Y:</label>
+	    		<input class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')">	
+			</div>
+	</div>
+	<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				<label for="example-number-input" class="leftLabelForm">WGS84 NW::</label>
+	    		<input class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')">	
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+				<label for="example-number-input" class="leftLabelForm">WGS84 SE:</label>
+	    		<input class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')">	
+			</div>
+	</div>
+</div>			
+
+
