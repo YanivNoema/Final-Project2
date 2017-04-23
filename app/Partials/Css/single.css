@@ -36,4 +36,7 @@ a:hover, a:visited {text-decoration: none !important;}
 .disablePaddingRight{padding-right: 0px !important;}
 .height680px{height: 620px;}
 
+.addOneBefore{
+	before:'1:';
+}
 

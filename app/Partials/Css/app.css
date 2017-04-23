@@ -24,9 +24,9 @@
 .mapTittle{
 
 	color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     margin-top: 10px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .filterTittle{
@@ -185,4 +185,60 @@
     left: 3%;
     position: relative;
     margin-bottom: 4px
+}
+
+/*FILTERS*/
+.filterText{
+
+    color: #9E9E9E;
+    font-size: 13px;
+    left: 3%;
+    position: relative;
+    margin-bottom: 4px;
+}
+
+.filterBoxBig{
+	margin: 5px;
+}
+
+.filterBoxSmall{
+	margin: 8px;
+}
+
+.filter-control{
+	
+    height: 34px;
+    padding: 6px 6px;
+    font-size: 12px;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.width50px{width: 60px !important;}
+.paddingTop4px{padding-top: 4px !important;}
+.goBold{font-weight: bold;}
+
+
+.filterSmallSymbols{
+	color: #9E9E9E;
+    font-weight: bold;
+    font-size: 12px;
+    top: 5px;
+    position: relative;
+}
+
+.posRelTop5{position: relative;top: 5px;}
+
+.one{
+	
+	color:#9E9E9E;
+	position: relative;
+	top: 5px;
+	font-size: 12px;
 }

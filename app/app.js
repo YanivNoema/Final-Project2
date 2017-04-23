@@ -53,7 +53,6 @@ app.directive('mapCanvas', function() {
         controller: 'mapCntlr',
         link: function(scope, element) {
 		    new google.maps.Map(element[0], mapOptions);
-
         }
     };
 });
@@ -74,9 +73,12 @@ app.controller('mapCntlr', ['$scope', function($scope,element) {
 
 	map = new google.maps.Map(document.getElementById('map'), {
 	center: Israel,
-	zoom: 9,
-	editable: true,
-	draggable: true
+	zoom: 9
+/*	editable: false,
+	draggable: false,
+	zoomControl: false,
+	scrollwheel: false,
+	disableDoubleClickZoom: false*/
 	});
 
 	var bounds = {
@@ -89,7 +91,7 @@ app.controller('mapCntlr', ['$scope', function($scope,element) {
 	// Define the rectangle and set its editable property to true.
 	rectangle = new google.maps.Rectangle({
 		bounds: bounds,
-		editable: true,
+		editable: false,
 		draggable: true
 	});
 
