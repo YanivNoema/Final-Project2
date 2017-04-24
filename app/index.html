@@ -3,31 +3,37 @@
 	<head>
 
 		<!--DEFINE ANGULAR 1.4.8-->
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- USING -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.js"></script>
+		<script src="bower_components/lodash/dist/lodash.min.js"></script>
+		<script src="http://maps.google.com/maps/api/js"></script>
+		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.3/proj4-src.js"></script>
+		<script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
-<!-- 	
-		GOOGLE MAPS SECTION 	
-		API key: IzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY
- -->
+		<script src="app.js"></script>
+		<script src="Partials/Controllers/table-controller.js"></script>
+
+		<!--
+                GOOGLE MAPS SECTION
+                API key: IzaSyDEZIJLhUJgjyMLbfBWWjBR66eLG6C4lCY
+         -->
 		<!-- ESSENTIALS -->
 		<title>Tel-Hai Maps Archive</title>	
 		<link rel="shortcut icon" href="http://www.telhai.ac.il/sites/all/themes/th_bootstrap/favicon.ico" type="image/vnd.microsoft.icon">
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />	
-		<script src="app.js"></script>
 
-		<!-- USING -->
-		<script src="http://maps.google.com/maps/api/js"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>		
-    	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.3/proj4-src.js"></script>
-		<script src="bower_components/angular-ui-grid/ui-grid.min.js"></script>
-		<script src="bower_components/lodash/dist/lodash.min.js"></script>
-		<script src="Partials/Controllers/table-controller.js"></script>
+
 
 		<!-- CSS -->
 		<link rel="styleSheet" href="bower_components/angular-ui-grid/ui-grid.min.css"/>
+		<link rel="styleSheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css"/>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="partials/css/app.css">
-		<link rel="stylesheet" type="text/css" href="partials/css/single.css">	
+		<link rel="stylesheet" type="text/css" href="Partials/Css/app.css">
+		<link rel="stylesheet" type="text/css" href="Partials/Css/single.css">
 
 		<!-- FONTS -->
 		<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">

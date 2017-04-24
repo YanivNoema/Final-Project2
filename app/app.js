@@ -2,6 +2,8 @@
 
 /*DEFINE ANGULAR MODULE*/
 var app = angular.module("TelHaiMaps", [
+    'ngAnimate',
+    'ui.bootstrap',
 	'ngRoute',
     'ui.grid',
     'ui.grid.edit',

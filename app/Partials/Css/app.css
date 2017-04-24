@@ -15,14 +15,17 @@
     height: 650px;
 }
 
-.upperMap{
+.upperFilter {
+	background: #00897b;
+	border-radius: 4px;
+}
 
-	   background: #00897b;
-	   border-radius: 4px; 
+.upperMap{
+	background: #00897b;
+	border-radius: 4px;
 }
 
 .mapTittle{
-
 	color: #fff;
     font-size: 15px;
     margin-top: 10px;
@@ -30,11 +33,59 @@
 }
 
 .filterTittle{
+	color: #fff;
+	font-size: 15px;
+	margin-top: 10px;
+	padding: 15px;
 
-	color: #607D8B;
-	padding: 5px;
-    font-size: 18px;
+}
 
+.table-row {
+	margin-top:15px;
+	max-height: 80%;
+}
+
+.scale-filter{
+	border-radius: 0 4px 4px 0;
+	border-right: 1px solid #9E9E9E !important;
+	border-top: 1px solid #9E9E9E !important;
+	border-bottom: 1px solid #9E9E9E !important;
+	border-left:none !important;
+	color: #9E9E9E !important;
+	height: 34px;
+	padding: 6px 0;
+	font-size: 14px;
+	max-width: 115px;
+}
+
+.filters-button {
+	min-width: 120px;
+}
+
+.filter-input{
+	color: #9E9E9E !important;
+	border: 1px solid #9E9E9E !important;
+	max-width: 60% !important;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	border-radius: 4px;
+	min-width: 120px;
+}
+
+.scale-prefix{
+	color: #9E9E9E !important;
+	border-left: 1px solid #9E9E9E !important;
+	border-top: 1px solid #9E9E9E !important;
+	border-bottom: 1px solid #9E9E9E !important;
+	height: 34px;
+	padding: 8px 0 8px 5px;
+	font-size: 14px;
+	border-radius: 4px;
+}
+
+.no-padding {
+	padding: 0;
 }
 
 .containerMap{
@@ -75,7 +126,7 @@
 .footer-text{
 
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     padding-top: 5px;
 }
 
@@ -118,12 +169,13 @@
 	padding-top: 6px !important;
 	color: #00897b;
 	font-size: 12px;
+	font-weight: 700;
 }
 
 .formBox {
     
     margin: auto;
-    margin: : 15px;
+    margin: 15px;
 }
 
 

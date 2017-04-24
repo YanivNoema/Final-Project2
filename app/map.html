@@ -1,67 +1,106 @@
 <div class="section">
 	<div class="container">
 		<div class="row height680px col-xs-12 col-sm-12 col-md-12 col-lg-12 containerBig">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mapFilters">
-				<p class="filterTittle">Filters Goes Here</p>
-				<div class="row" style="margin-bottom: 10px; padding-left: 10px">
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 no-padding">
-								Scale Filter:
-							</div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-								<span class="scale-prefix">1:<input type="number" name="scaleMin" min="2500" max="1000000" step="500"></span>
-							</div>
-							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-								<span class="scale-prefix">1:<input type="number" name="scaleMax" min="2500" max="1000000" step="500"></span>
-							</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mapFilters" ng-controller="tableController">
+				<div class="upperFilter">
+					<p class="filterTittle">{{filterMessage}}</p>
+				</div>
+				<div ng-if="gridOptions.data.length === 0">
+					<a class="btn btn-success filters-button" style="background: #00897b; margin: 50% 40%; float: left;" ng-click="searchMaps()">
+						<span class="glyphicon glyphicon-search"></span> Search
+					</a>
+				</div>
+				<div ng-if="gridOptions.data.length !== 0">
+
+				<!--<div class="row" style="margin-bottom: 10px; padding-left: 10px">-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 no-padding leftLabelForm">-->
+						<!--Scale:-->
+					<!--</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
+						<!--<span class="scale-prefix">1:<input class="scale-filter" string-to-number type="number" ng-model="minScaleFilter"-->
+															<!--name="scaleMin" min="2500" max="1000000" step="500"></span>-->
+					<!--</div>-->
+					<!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
+						<!--<span class="scale-prefix">1:<input class="scale-filter" string-to-number type="number" name="scaleMax"-->
+															<!--min="minScaleFilter" ng-model="maxScaleFilter"-->
+															<!--max="1000000" step="500"></span>-->
+					<!--</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">-->
+						<!--<a class="btn btn-success filters-button" style="background: #00897b; "ng-click="filterTable()">-->
+							<!--<span class="glyphicon glyphicon-filter"></span> Filter Table-->
+						<!--</a>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="row" style="padding-left: 10px">-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 no-padding leftLabelForm">-->
+						<!--Year:-->
+					<!--</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
+						<!--<input class="filter-input" type="number" string-to-number name="yearMin" min="1850" max="2017"-->
+							   <!--ng-model="minYearFilter" style="min-width: 132px;">-->
+					<!--</div>-->
+					<!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
+						<!--<input class="filter-input" type="number" string-to-number name="yearMax" min="{{minYearFilter}}" max="2017"-->
+							   <!--ng-model="maxYearFilter" style="min-width: 132px;">-->
+					<!--</div>-->
+					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">-->
+						<!--<a class="btn btn-warning filters-button" ng-click="resetScaleYearFilters()">-->
+							<!--<span class="glyphicon glyphicon-trash"></span> Clear Filters-->
+						<!--</a>-->
+					<!--</div>-->
+				<!--</div>-->
+
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn-group btn-group-justified" role="group" aria-label="...">
+							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="selectAll()">
+								<span class="glyphicon glyphicon-ok"></span> Select All
+							</a>
+							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="clearAll()">
+								<span class="glyphicon glyphicon-trash"></span> Clear
+							</a>
+							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="DownloadMaps()">
+								<span class="glyphicon glyphicon-arrow-down"></span> Download
+							</a>
+							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="Search()">
+								<span class="glyphicon glyphicon-search"></span> Search Again
+							</a>
 						</div>
-						<div class="row" style="padding-left: 10px">
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 no-padding">
-								Year Filter:
-							</div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-								<input type="number" name="yearMin" min="1850" max="2017" style="min-width: 132px;">
-							</div>
-							<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>
-							<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-								<input type="number" name="yearMax" min="1850" max="2017" style="min-width: 132px;">
-							</div>
+					</div>
+					<div class="row table-row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<div id="grid" ui-grid="gridOptions" class="grid" style="overflow: auto; height: 470px;"
+								 ui-grid-selection ui-grid-resize-columns></div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-controller="tableController">
-								<div id="grid" ui-grid="gridOptions" class="grid" style="height:500px; top: 0; bottom: 0;"
-									 ui-grid-selection ui-grid-resize-columns></div>
-								<!-- <div ng-controller="tableController">
-									<div id="grid1" ui-grid="{ data: myData }" class="grid"></div>
-								</div> -->
-							</div>
-						</div>
-			</div>					
+					</div>
+				</div>
+			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
 				<div class="upperMap">
-					<p class="mapTittle">Place the ractangle on the map or choose from the coordinate below</p>	
+					<p class="mapTittle">Place the rectangle on the map or choose from the coordinates below</p>
 				</div>
 				<div ng-controller="mapCntlr">
 					<div class="form-group row">
 						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
-								<p class="itmTittle">ITM projection:</p>
+								<p class="itmTittle">ITM - Israel Transverse Mercator:</p>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<label class="leftLabelForm">ITM-X:</label>
+									<label class="leftLabelForm">easting:</label>
 						    		<input id="itmxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')" step="100">	
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
-									<label class="leftLabelForm">ITM-Y:</label>
+									<label class="leftLabelForm">northing:</label>
 						    		<input id="itmyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')" step="1000">	
 								</div>
 						</div>
 						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
-								<p class="itmTittle">WGS80 projection:</p>
+								<p class="itmTittle">WGS80 - World Geocoding System</p>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<label class="leftLabelForm">WGS84-NE:</label>
+									<label class="leftLabelForm">longitude:</label>
 						    		<input id="wgsxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')" step="0.01">
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
-									<label class="leftLabelForm">WGS84-SW:</label>
+									<label class="leftLabelForm">latitude:</label>
 						    		<input id="wgsyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')" step="0.01">
 								</div>
 						</div>
