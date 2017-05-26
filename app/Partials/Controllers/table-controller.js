@@ -2,7 +2,7 @@
  * Created by shay on 01/04/17.
  */
 
-app.controller('tableController', ['$scope', '$uibModal', function ($scope, $uibModal, $log, $http) {
+app.controller('tableController', ['$scope', '$uibModal','mapFilterService', function ($scope, $uibModal, $log, $http, mapFilterService) {
     $scope.minScaleFilter = '';
     $scope.maxScaleFilter = '';
     $scope.minYearFilter = '';
@@ -82,7 +82,7 @@ app.controller('tableController', ['$scope', '$uibModal', function ($scope, $uib
     $scope.searchMaps = function () {
         //TODO: When function is called need to get coordinates from map and filter data accordingly
         //NEXT LINE is FOR TEST ONLY
-        $scope.gridOptions.data = $scope.testData;
+        $scope.gridOptions.data = mapFilterService.search();
 
         $scope.filterMessage = 'Use the filters to reduce the amount of results';
     }

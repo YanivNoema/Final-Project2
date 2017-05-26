@@ -83,28 +83,57 @@
 				</div>
 				<div ng-controller="mapCntlr">
 					<div class="form-group row">
+					  <uib-tabset active="activeJustified">
+						<uib-tab index="0" heading="ITM - Israel Transverse Mercator">
+							<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
+									<p class="itmTittle">North-Easting Point</p>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<label class="leftLabelForm">easting:</label>
+							    		<input id="itmxID1" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx1" ng-change="updateValues('itm')" step="100">	
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+										<label class="leftLabelForm">northing:</label>
+							    		<input id="itmyID1" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy1" ng-change="updateValues('itm')" step="1000">	
+									</div>
+							</div>
+							<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
+									<p class="itmTittle">South-Westing Point</p>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<label class="leftLabelForm">westing:</label>
+							    		<input id="itmxID2" value="updateAllCoordiantes" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx2" ng-change="updateValues('itm')" step="100">
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+										<label class="leftLabelForm">southing:</label>
+							    		<input id="itmyID2" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy2" ng-change="updateValues('itm')" step="0.01">
+									</div>
+							</div>
+						</uib-tab>
+    					<uib-tab index="1" heading="WGS80 - World Geocoding System">
+    
 						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
-								<p class="itmTittle">ITM - Israel Transverse Mercator:</p>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<label class="leftLabelForm">easting:</label>
-						    		<input id="itmxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')" step="100">	
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
-									<label class="leftLabelForm">northing:</label>
-						    		<input id="itmyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')" step="1000">	
-								</div>
-						</div>
-						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
-								<p class="itmTittle">WGS80 - World Geocoding System</p>
+								<p class="itmTittle">North-Easting Point</p>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									<label class="leftLabelForm">longitude:</label>
-						    		<input id="wgsxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')" step="0.01">
+						    		<input id="wgsxID1" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsX1" ng-change="updateValues('wgs')" step="0.01">	
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
 									<label class="leftLabelForm">latitude:</label>
-						    		<input id="wgsyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')" step="0.01">
+						    		<input id="wgsyID1" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsY1" ng-change="updateValues('wgs')" step="0.01">	
 								</div>
 						</div>
+						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
+								<p class="itmTittle">South-Westing Point</p>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">longitude:</label>
+						    		<input id="wgsxID2" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsX2" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">latitude:</label>
+						    		<input id="wgsyID2" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsY2" ng-change="updateValues('wgs')" step="0.01">
+								</div>
+						</div>	
+    					</uib-tab>
+					  </uib-tabset>
 					</div>									
 					<div class="mapHeight col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<map-canvas id="map"></map-canvas>
