@@ -238,3 +238,10 @@
     position: relative;
     margin-bottom: 4px
 }
+
+.download-modal-header {
+	background: #00897b;
+	color: white !important;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+}

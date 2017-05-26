@@ -2,7 +2,7 @@
  * Created by shay on 01/04/17.
  */
 
-app.controller('tableController', ['$scope', function ($scope, $uibModal, $http) {
+app.controller('tableController', ['$scope', '$uibModal', function ($scope, $uibModal, $log, $http) {
     $scope.minScaleFilter = '';
     $scope.maxScaleFilter = '';
     $scope.minYearFilter = '';
@@ -51,10 +51,32 @@ app.controller('tableController', ['$scope', function ($scope, $uibModal, $http)
         $scope.gridApi.selection.clearSelectedRows();
     };
 
-    $scope.DownloadMaps = function() {
+    $scope.DownloadMaps = function(data) {
         //TODO: Create modal that shows the list of selected rows
-        //TODO: Send http get request with all selected rows to download the maps
-
+        $scope.selectedItems = $scope.gridApi.selection.getSelectedRows();
+        if($scope.selectedItems.length === 0)
+            return;
+        $scope.selectedItems.forEach(function (item) {
+            item.downloadStatus = true;
+        } );
+        var modalInstance = $uibModal.open({
+            animation: true,
+            ariaLabelledBy: 'modal-title',
+            ariaDescribedBy: 'modal-body',
+            templateUrl: 'Partials/Controllers/download-modal-view.html',
+            controller: 'DownloadController',
+            controllerAs: '$ctrl',
+            resolve: {
+                downloadList: function () {
+                    return $scope.selectedItems;
+                }
+            }
+        });
+        modalInstance.result.then(function (selectedItem) {
+            //TODO: Send http get request with all selected rows to download the maps
+        }, function () {
+            //TODO: Add
+        });
     }
 
     $scope.searchMaps = function () {

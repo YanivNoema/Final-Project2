@@ -1,0 +1,20 @@
+<div class="modal-header download-modal-header">
+    <h3 class="modal-title" id="modal-title">Download Verification</h3>
+</div>
+<div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4>The next maps will be downloaded:</h4>
+            </div>
+        </div>
+        <div class="checkbox" ng-repeat="item in $ctrl.downloadList track by $index">
+            <label>
+                <input type="checkbox" ng-model="item.downloadStatus" ng-click="$ctrl.updateCounter($index)">
+                BibSysNo: {{ item.BibSysNo }} , Year: {{item.year}} , Scale: {{item.scale}}
+            </label>
+        </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" ng-disabled="$ctrl.counter === 0" type="button" ng-click="$ctrl.ok()">OK</button>
+    <button class="btn btn-danger" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

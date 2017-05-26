@@ -60,7 +60,8 @@
 							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="clearAll()">
 								<span class="glyphicon glyphicon-trash"></span> Clear
 							</a>
-							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="DownloadMaps()">
+							<a class="btn btn-success filters-button" ng-disabled="gridApi.selection.getSelectedRows().length === 0"
+							   style="background: #00897b;" ng-click="DownloadMaps()">
 								<span class="glyphicon glyphicon-arrow-down"></span> Download
 							</a>
 							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="Search()">
@@ -70,7 +71,7 @@
 					</div>
 					<div class="row table-row">
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<div id="grid" ui-grid="gridOptions" class="grid" style="overflow: auto; height: 470px;"
+							<div id="grid" ui-grid="gridOptions" class="grid" style="overflow: auto; height: 470px; border-radius: 4px"
 								 ui-grid-selection ui-grid-resize-columns></div>
 						</div>
 					</div>
