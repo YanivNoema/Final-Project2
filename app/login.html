@@ -1,34 +1,53 @@
-<div class="loginPage" ">
-    <div align="center" class="formBox paddingTop2em width30P">
-        <form class="form-signin" role="form" ng-submit="login()">
-            <p class="loginTittle">Please provide your password :</p>
-            <span><input type="password"
-                class="form-control" ng-model="passwordValueCorrect" required> </span>
-            <br>
-            <button class="btn btn-md btn-block connectButton" type="submit">
-                <b>Connect</b>
-            </button>
-        </form>
-    </div>
-</div>
-
-<hr class="hLine">
-
-<div ng-show="passwordValueCorrect">
-    <div align="center" class="formBox width30P">
-        <p font="bold" class="loginTittle">Please insert the new map ID and the corresponding x and y coordinate:</p>
+<div ng-controller="loginCntlr" align="center">
+    <div class="loginPage">
+        <div align="center" class="formBox paddingTop2em width30P">
             <form class="form-signin" role="form" ng-submit="login()">
-                    <input id="mapId" class="form-control" type="number" step="0.00000001" value="" placeholder="Map ID:">   
-                    <br>
-                    <input id="XCoor" class="form-control" type="number" step="0.00000001" value="" placeholder="y coordinate: ">   
-                    <br>
-                    <input id="YCoor" class="form-control" type="number" step="0.00000001" value="" placeholder="x coordinate: ">   
-                 <br>
-                <button class="btn btn-md btn-block insertButton" type="submit">
-                <b>Insert</b>
-            </button>
-        </form>
+                <p class="loginTittle">Please provide your user name:</p>
+                <span><input type="text"
+                    class="form-control" ng-model="userName" required> </span>
+                <p class="loginTittle">Please provide your password :</p>
+                <span><input type="password"
+                    class="form-control" ng-model="password" required> </span>
+                <br>
+                <button class="btn btn-md btn-block connectButton" type="submit">
+                    <b>Login</b>
+                </button>
+            </form>
+        </div>
+    </div>
+
+<!-- ng-show="passwordValueCorrect" -->
+    <hr class="hLine">
+    <div >
+        <div align="center" class="formBox width30P">
+            <p font="bold" class="loginTittle">Please insert the new map ID and the corresponding x and y coordinate:</p>
+                <form class="form-signin" role="form" ng-submit="login()">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:10px; margin-bottom: 10px;">
+                            <input ng-model="mapId" class="form-control" type="number" value="" placeholder="Map ID:">   
+                        </div>
+                        <br>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input ng-model="XTL" class="form-control" type="number" value="" placeholder="x top left">
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input ng-model="YTL" class="form-control" type="number" value="" placeholder="y top left">
+                            </div>
+                        </div>
+                        </br>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:10px; margin-bottom: 10px;">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input ng-model="XBR" class="form-control" type="number" value="" placeholder="x bottom right">
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <input ng-model="YBR" class="form-control" type="number" value="" placeholder="y bottom right">   
+                            </div>
+                        </div>
+                    <button ng-disabled="!XTL && !YTL && !YBR && !XBR && !mapId" class="btn btn-md btn-block insertButton" type="submit" ng-click="insertNewMap()">
+                    <b>Insert</b>
+                </button>
+            </form>
+        </div>
     </div>
 </div>
-
 

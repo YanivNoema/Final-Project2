@@ -1,111 +1,133 @@
-<div class="section">
-	<div class="container">
+<div class="section" ng-controller="mapCntlr">
+	<div class="container-fluid">
 		<div class="row height680px col-xs-12 col-sm-12 col-md-12 col-lg-12 containerBig">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 mapFilters" ng-controller="tableController">
+			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mapFilters">
 				<div class="upperFilter">
 					<p class="filterTittle">{{filterMessage}}</p>
 				</div>
-				<div ng-if="gridOptions.data.length === 0">
-					<a class="btn btn-success filters-button" style="background: #00897b; margin: 50% 40%; float: left;" ng-click="searchMaps()">
-						<span class="glyphicon glyphicon-search"></span> Search
-					</a>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn-group btn-group-justified" role="group" aria-label="...">
+						<a class="btn btnTelHai btn-primary" ng-click="Search()">
+							<span class="glyphicon glyphicon-search"></span> Search
+						</a>
+						<a class="btn btnTelHai btn-warning"  ng-click="clearAll()">
+							<span class="glyphicon glyphicon-trash"></span> Clear
+						</a>	
+					</div>
 				</div>
-				<div ng-if="gridOptions.data.length !== 0">
-
-				<!--<div class="row" style="margin-bottom: 10px; padding-left: 10px">-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 no-padding leftLabelForm">-->
-						<!--Scale:-->
-					<!--</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
-						<!--<span class="scale-prefix">1:<input class="scale-filter" string-to-number type="number" ng-model="minScaleFilter"-->
-															<!--name="scaleMin" min="2500" max="1000000" step="500"></span>-->
-					<!--</div>-->
-					<!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
-						<!--<span class="scale-prefix">1:<input class="scale-filter" string-to-number type="number" name="scaleMax"-->
-															<!--min="minScaleFilter" ng-model="maxScaleFilter"-->
-															<!--max="1000000" step="500"></span>-->
-					<!--</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">-->
-						<!--<a class="btn btn-success filters-button" style="background: #00897b; "ng-click="filterTable()">-->
-							<!--<span class="glyphicon glyphicon-filter"></span> Filter Table-->
-						<!--</a>-->
-					<!--</div>-->
-				<!--</div>-->
-				<!--<div class="row" style="padding-left: 10px">-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-2 col-lg-1 no-padding leftLabelForm">-->
-						<!--Year:-->
-					<!--</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
-						<!--<input class="filter-input" type="number" string-to-number name="yearMin" min="1850" max="2017"-->
-							   <!--ng-model="minYearFilter" style="min-width: 132px;">-->
-					<!--</div>-->
-					<!--<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">-</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">-->
-						<!--<input class="filter-input" type="number" string-to-number name="yearMax" min="{{minYearFilter}}" max="2017"-->
-							   <!--ng-model="maxYearFilter" style="min-width: 132px;">-->
-					<!--</div>-->
-					<!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-4">-->
-						<!--<a class="btn btn-warning filters-button" ng-click="resetScaleYearFilters()">-->
-							<!--<span class="glyphicon glyphicon-trash"></span> Clear Filters-->
-						<!--</a>-->
-					<!--</div>-->
-				<!--</div>-->
-
+				<div class="row" style="padding-top: 10px;">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<uib-tabset active="activeJustified" justified="true">
+	    					<uib-tab index="0" heading="ITM-Israel Transverse Mercator">
+								<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="margin-top: 5px;">
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smallTittle">North East:</div>
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+									<label class="leftLabelForm">easting:</label>
+						    		<input id="itmX1Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmX1Model" ng-change="updateValues('itm')" step="1000">	
+								</div>
+								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+									<label class="leftLabelForm">northing:</label>
+						    		<input id="itmY1Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmY1Model" ng-change="updateValues('itm')" step="1000">	
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smallTittle">South West:</div>
+								</div>
+								<div class="row">
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+											<label class="leftLabelForm">westing:</label>
+								    		<input id="itmX2Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmX2Model" ng-change="updateValues('itm')" step="1000">	
+										</div>
+										<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+											<label class="leftLabelForm">southing:</label>
+								    		<input id="itmY2Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmY2Model" ng-change="updateValues('itm')" step="1000">	
+										</div>
+									</div>
+								</div>
+							</div>	    					
+						</uib-tab>
+	    					<uib-tab class="smallTittle" index="1" heading="WGS80-World Geocoding System">
+		    					<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="margin-top: 5px;">
+		    						<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smallTittle">North East:</div>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<label class="leftLabelForm">longitude:</label>
+							    		<input id="wgsX1Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsX1Model" ng-change="updateValues('wgs')" step="0.01">
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+										<label class="leftLabelForm">latitude:</label>
+							    		<input id="wgsY1Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsY1Model" ng-change="updateValues('wgs')" step="0.01">
+									</div>
+									<div class="row">
+										<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 smallTittle">South West:</div>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+										<label class="leftLabelForm">longitude:</label>
+							    		<input id="wgsX2Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsX2Model" ng-change="updateValues('wgs')" step="0.01">
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
+										<label class="leftLabelForm">latitude:</label>
+							    		<input id="wgsY2Id" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsY2Model" ng-change="updateValues('wgs')" step="0.01">
+									</div>
+								</div>
+							</uib-tab>
+ 						</uib-tabset>		
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div>
+						<p class="smallTittle">Please choose the search type:</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<form>
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+							  <label class="leftLabelForm" style="font-size: 14px;">
+							    <input type="radio" ng-model="searchType" value="contained">
+							    Contained
+							  </label>
+						  	</div>
+							<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+							  <label class="leftLabelForm" style="font-size: 14px;">
+							    <input  type="radio" ng-model="searchType" value="contains">
+							    Contains
+							  </label>
+						  	</div>
+						 </form>
+					</div>
+				</div>
+				<hr>
+				<div>
 					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn-group btn-group-justified" role="group" aria-label="...">
-							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="selectAll()">
-								<span class="glyphicon glyphicon-ok"></span> Select All
-							</a>
-							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="clearAll()">
-								<span class="glyphicon glyphicon-trash"></span> Clear
-							</a>
-							<a class="btn btn-success filters-button" ng-disabled="gridApi.selection.getSelectedRows().length === 0"
-							   style="background: #00897b;" ng-click="DownloadMaps()">
-								<span class="glyphicon glyphicon-arrow-down"></span> Download
-							</a>
-							<a class="btn btn-success filters-button" style="background: #00897b;" ng-click="Search()">
-								<span class="glyphicon glyphicon-search"></span> Search Again
-							</a>
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 resultTittle" style="text-align: center;">
+							<div ng-show="searchResults.length == 0">
+							No Results Found	
+							</div>
+							<div  ng-show="searchResults.length > 49">
+							Please narrow your search up to 50 results
+							</div>
+							<div  ng-show="searchResults.length > 0">
+							Results Found: {{ searchResults.length }}
+							</div>
 						</div>
 					</div>
-					<div class="row table-row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<div id="grid" ui-grid="gridOptions" class="grid" style="overflow: auto; height: 470px; border-radius: 4px"
-								 ui-grid-selection ui-grid-resize-columns></div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align: center;">
+							<a ng-show="searchResults.length > 0" class="btn btnTelHai btn-success"  ng-click="openResults()" 	ng-disabled="searchResults.length === 0 || searchResults.length > 49">
+								<span class="glyphicon glyphicon-ok">&nbsp</span>Show Results
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 containerMap">
+			<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 containerMap">
 				<div class="upperMap">
 					<p class="mapTittle">Place the rectangle on the map or choose from the coordinates below</p>
 				</div>
-				<div ng-controller="mapCntlr">
-					<div class="form-group row">
-						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight">
-								<p class="itmTittle">ITM - Israel Transverse Mercator:</p>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<label class="leftLabelForm">easting:</label>
-						    		<input id="itmxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmx" ng-change="updateValues('itm')" step="100">	
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
-									<label class="leftLabelForm">northing:</label>
-						    		<input id="itmyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="itmy" ng-change="updateValues('itm')" step="1000">	
-								</div>
-						</div>
-						<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12 disablePaddingRight" style="padding-top: 5px;">
-								<p class="itmTittle">WGS80 - World Geocoding System</p>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-									<label class="leftLabelForm">longitude:</label>
-						    		<input id="wgsxID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsNE" ng-change="updateValues('wgs')" step="0.01">
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 disablePaddingRight">
-									<label class="leftLabelForm">latitude:</label>
-						    		<input id="wgsyID" value="" type="number" string-to-number class="form-control rightNumberForm" ng-model="wgsSW" ng-change="updateValues('wgs')" step="0.01">
-								</div>
-						</div>
-					</div>									
+				<div>							
 					<div class="mapHeight col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<map-canvas id="map"></map-canvas>
 					</div>	
@@ -113,78 +135,5 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<!-- 
-		<script type="text/javascript">
-						// This example adds a user-editable rectangle to the map.
-						// When the user changes the bounds of the rectangle,
-						// an info window pops up displaying the new bounds.
-
-						var rectangle;
-						var map;
-						var Israel;
-
-						function initMap() {
-
-							Israel = new google.maps.LatLng(31.768319, 35.21370999999999);
-
-							map = new google.maps.Map(document.getElementById('map'), {
-							center: Israel,
-							zoom: 8
-							});
-
-							var bounds = {
-							north: 31.78,
-							south: 31.08,
-							east: 35.12,
-							west: 34.74
-							};
-
-
-						    console.log(Israel.lat());
-
-						    console.log(Israel.lng());
-
-							// Define the rectangle and set its editable property to true.
-							rectangle = new google.maps.Rectangle({
-								bounds: bounds,
-								editable: true,
-								draggable: true
-							});
-
-							rectangle.setMap(map);
-
-							// Add an event listener on the rectangle.
-							rectangle.addListener('bounds_changed', showNewRect);
-						}
-
-							/** @this {google.maps.Rectangle} */
-						function showNewRect(event) {
-							var ne = rectangle.getBounds().getNorthEast();
-							var sw = rectangle.getBounds().getSouthWest();
-
-							document.getElementById('north').value = ne.lat();
-							document.getElementById('east').value = ne.lng();
-							document.getElementById('south').value = sw.lat();
-							document.getElementById('west').value = sw.lng();				 
-						}
-
-						document.addEventListener('input', function (evt) {
-							var north = parseFloat(document.getElementById('north').value);
-							var south = parseFloat(document.getElementById('south').value);
-							var east = parseFloat(document.getElementById('east').value);
-							var west = parseFloat(document.getElementById('west').value);
-
-					    	if (!isNaN(north) && !isNaN(south) && !isNaN(west) && !isNaN(east)) {
-								var NE = new google.maps.LatLng(north, east);
-								var SW = new google.maps.LatLng(south, west);
-								var newRect = new google.maps.LatLngBounds(SW,NE);
-								rectangle.setBounds(newRect);
-								map.fitBounds(newRect);
-							}
-						});
-						
-
-
-						</script> -->
+<!-- 	<p class="us paddL">*All the maps are taken from Tel-Hai Library</p>
+ --></div>

@@ -1,4 +1,4 @@
-mew edit - add login page
+ew edit - add login page
 
 
 Please enter the commit message for your changes. Lines starting

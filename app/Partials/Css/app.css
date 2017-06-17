@@ -1,5 +1,6 @@
 /*MAP VIEW*/
 
+
 #map {
 
     height: 97% !important;
@@ -102,19 +103,19 @@
 
 .mapHeight{
 
-	height: 420px;
+	height: 548px;
 	padding-top: 8px;
 }
 
 /*FOOTER*/
 
-/*.footerStickBottom{
+.footerStickBottom{
 
     position: absolute !important;
     bottom: 0 !important;
     width: 100% !important;
 }
-*/
+
 .footer{
 
 	margin: 15px;
@@ -167,8 +168,8 @@
 
 	float: left !important;
 	padding-top: 6px !important;
-	color: #00897b;
-	font-size: 12px;
+	color: grey;
+	font-size: 13px;
 	font-weight: 700;
 }
 
@@ -190,6 +191,7 @@
 
 	background: #028a7c;
     color: white;
+    max-width: 50%;
 }
 
 .connectButton:hover{
@@ -202,6 +204,7 @@
 
 	background: #028a7c;
     color: white;
+    max-width: 50%;
 }
 
 .insertButton:hover{
@@ -230,13 +233,13 @@
     position: relative;
 }
 
-.itmTittle{
+.smallTittle{
     font-weight: bold;
-    color: grey;
-    font-size: 10px;
+    color: #00897b;
+    font-size: 14px;
     left: 3%;
     position: relative;
-    margin-bottom: 4px
+    padding: 3px;
 }
 
 .download-modal-header {
@@ -245,3 +248,57 @@
 	border-top-left-radius: 6px;
 	border-top-right-radius: 6px;
 }
+
+/*Overide boostrap CSS*/
+.nav-tabs.nav-justified>li>a{
+
+	font-weight: bold;
+    color: grey;
+    font-size: 13px;
+}
+
+.nav-tabs.nav-justified>li>a:hover{
+
+    color: #0D47A1;
+}
+
+.btnTelHai{
+	/*background: #00897b;
+	*/color: #fff;
+	border: 2px solid white;
+}
+
+.btnTelHai:hover {
+	/*background: #00796B;
+	*/color: #fff;
+}
+
+.resultTittle{
+
+	font-size: 19px;
+    font-weight: inherit;
+}
+
+.us{
+
+	font-style: italic;
+	font-size:12px;
+
+}
+
+.paddL{
+	padding-left: 55px;
+}
+
+.posRel{
+	position: relative;
+}
+/*
+.login input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+ 
+.login input[type="number"] {
+    -moz-appearance: textfield;
+}*/
